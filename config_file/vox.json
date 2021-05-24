@@ -1,0 +1,47 @@
+{
+    "save_name": "checkpoint/vox",
+    "data_path":"your_data_path",
+    "load_path": null,
+    "note":"",
+    "repeat_numb":1,
+    "part_numb": 11,
+    "epoch_start":0,
+    "total_steps":0,
+
+    "need_more_shift":1000,
+    "need_more_rotation":1000,
+    "increase_degrees":10,
+    "need_less_lr":1000,
+    "lr_delay":0.1,
+    "vgg_loss": true,
+    "vgg_weight": 10,
+    "gradient_weight": 5,
+    "augmentation_params":{
+        "flip_param":{
+            "horizontal_flip": false,
+            "time_flip": true
+        }
+    },
+    "vgg_loss_source": true,
+    "weight_s_image": 0.1,
+
+    "mask_flag": true,
+    "weight_mask": 0.05,
+    "weight_mask_zero":  0.05,
+
+    "con_flag": true,
+    "weight_con": 0.35,
+    
+    "latent_center": true,
+    "weight_latent_center": 0.035,
+
+    "eq_flag": true,
+    "weight_eq": 0.05,
+
+    "tran_flag": true,
+    "weight_tran": 1,
+    
+    "rots_flag": true,
+    "weight_rots": 0.1
+
+}
