@@ -57,7 +57,13 @@ To do segmentation on video, run:
 ~~~bash
 python test.py --test_dir your_taichi_path/test/xxxx.mp4 --checkpoint_path save_model/taichi --out_dir result/out --part_numb 11 
 ~~~
+### Driving static image
 
+To do segmentation on video, run:
+
+~~~bash
+python driving_image.py --driving_image driving_image_path --source_image source_image_path --checkpoint_path save_model/taichi --out_dir result/driving_out --part_numb 11 
+~~~
 
 
 ## Acknowledgements

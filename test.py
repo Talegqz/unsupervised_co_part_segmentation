@@ -88,7 +88,7 @@ def start_run(opt):
 if __name__ == "__main__":
     parser = ArgumentParser(description="Evaluation script")
  
-    parser.add_argument("--test_dir", required=True, help="path to root folder of the train and test images")
+    parser.add_argument("--test_dir", required=True, help="path to test dir")
     parser.add_argument("--checkpoint_path", required=True,help="path to checkpoint to restore")
     parser.add_argument("--out_dir", required=True,help="path to save_result")
     parser.add_argument("--part_numb", default=11,type=int,help="model_part_numb")
