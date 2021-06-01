@@ -602,44 +602,6 @@ class Part_3D_Disnet(nn.Module):
 
         return out
     
-    def transform_hack(self,image_source,rotation_matrix):
-        # rotaion_matrix is rotaiton matrix and shift
-        out={}
-        s_volume, s_affine = self.encoder(image_source)
-        b, part_numb, d, w, h = s_volume.shape
-        for_inverse = ((torch.Tensor([0, 0, 0, 1])).unsqueeze(
-            0).unsqueeze(0)).repeat(b*part_numb, 1, 1).type(image_source.type())
-        merge_s_affine = torch.cat([s_affine, for_inverse.clone()], dim=1)
-        inverse_s_affine = torch.inverse(merge_s_affine)
-        inverse_s_affine = inverse_s_affine[:, 0:-1, :]
-        s_latent_volume = self.transform_volume(s_volume,inverse_s_affine)
-        s_volume = self.transform_volume(s_latent_volume,s_affine)
-
-
-        rotation_joint = rotation_matrix[0].unsqueeze(0)
-        translation = rotation_matrix[1].unsqueeze(0).view(-1,3,1)
-        
-        
-        affine_ro = euler_to_rotaion_matrix(rotation_joint)
-        final_affine_hack = torch.cat([affine_ro,translation],dim=2)
-        # print(final_affine_hack)
-        out['final_affine_hack']=final_affine_hack
-        s_volume = s_volume.view(b*part_numb, 1, d, w, h)
-        affine_grid_s = F.affine_grid(final_affine_hack, s_volume.shape)
-        s_volume_warp = F.grid_sample(s_volume, affine_grid_s)
-        s_volume_warp = s_volume_warp.view(b, part_numb, d, w, h)
-        s_volume = s_volume.view(b, part_numb, d, w, h)
-
-        pred_image_t,pred_image_hack,depth_hack = self.decoder(s_volume_warp)
-        out['pred_image_t'] = pred_image_t
-        out['pred_image_part'] = pred_image_hackvc  
-        out['pred_image_weight'] = depth_hack
-        out['pred_image_weightXpart'] = pred_image_hack*depth_hack
-
-
-        return out
-        pass
-
 
 
     def calculate_loss(self, out,arg):
