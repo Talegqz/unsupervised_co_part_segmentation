@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torch.nn import parallel
 from networks  import Hourglass,UpBlock2d,ResBlock2d
 from sync_batchnorm import SynchronizedBatchNorm2d as BatchNorm2d
 import torch.nn.functional as F
@@ -696,76 +697,5 @@ class Part_3D_Disnet(nn.Module):
         return loss_dict 
         # pass
 
-
-def test_net():
-    from train_V0 import get_parse
-    import argparse
-    import json
-    arg = get_parse()
-    arg_dict = vars(arg)
-    # if "fff" in arg:
-    #     print('ok')
-    
-    if arg.arg_file is not None:
-        with open(arg.arg_file, 'r') as f:
-            arg_str = f.read()
-            file_args = json.loads(arg_str)
-            arg_dict.update(file_args)
-            arg = argparse.Namespace(**arg_dict)
-    import os
-    # print(arg.augmentation_params)
-    
-  
-    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
-    model = Part_3D_Disnet(arg.part_numb).cuda()
-    data = torch.rand((2, 3, 128, 128)).cuda()
-    data2 = torch.rand((2, 3, 128, 128)).cuda()
-    out = model(data,data2)
-   
-    out['image_mask_inter'] = torch.rand((2, 1, 128, 128)).cuda()
-    for q in out:
-        print(q, out[q].shape)
-    model = torch.nn.DataParallel(model)
-    
-
-    loss_dict= model.module.calculate_loss(out,arg=arg)
-    # model.module.hack_each_part(data)
-    # torch.save(model.state_dict(), 'totally size')
-    # return
-    print('finsh write')
-    print(loss_dict)
-
-    loss_values = 0
-    for  val in loss_dict:
-        
-        loss_values+=loss_dict[val].mean()
-    loss_values.backward()
-    print(out['s_affine'])
-    # out = torch.rand(10, 3, 4)
-    # my = torch.Tensor([0, 0, 0, 1])
-    # my = my.unsqueeze(0).unsqueeze(0)
-    # my = my.repeat(10, 1, 1)
-    
-    # out = torch.cat([out, my], dim=1)
-    # # out = out[:,0:-1,:]
-    # print(out.shape)
-    # out = Q.driven_video(data, data)
-    # for q in out:
-    #     print(q, out[q].shape)
-    # print(out)
-
-def other_test():
-    # a = torch.zeros((1,4))
-    pass
-    # affine = transform_from_quaternion(a)
-    # print(affine)
 if __name__ == "__main__":
-    test_net()
-    # other_test()
-    # a = [torch.zeros(2,3,256,256) for i in range(10)]
-
-    # c = torch.stack(a,dim=1)
-    # print(c.shape)
-    # c = torch.sum(c,dim=1)
-    # print(c.shape)
-    # other_test()
+    pass
