@@ -55,6 +55,7 @@ def start_run(opt):
     model = init_model(opt.checkpoint_path,opt.part_numb)
     all_data = read_video(opt.driving_path)
     source_image_base = cv2.imread(opt.source_image)
+    source_image_base = cv2.cvtColor(source_image_base,cv2.COLOR_BGR2RGB)
     source_image_base = cv2.resize(source_image_base,(128,128))
     source_image = source_image_base[np.newaxis,:,:,:]
     source_image = source_image.transpose(0,3,1,2)/255
