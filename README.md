@@ -1,13 +1,12 @@
-# Unsupervised Co-part Segmentation through Assembly
-![avatar](teaser.PNG)
+# Unsupervised Co-part Segmentation through Assembly [ICML2021]
+
 
 ![Python](https://img.shields.io/badge/Python->=3.6-Blue?logo=python)  ![Pytorch](https://img.shields.io/badge/PyTorch-==1.0.0-Red?logo=pytorch)
 
 
-
 This repository contains the source code for the paper [Unsupervised Co-part Segmentation through Assembly](https://arxiv.org/abs/2106.05897) by [Qingzhe Gao](https://talegqz.github.io), [Bin Wang](https://binwangbfa.github.io), [Libin Liu](http://libliu.info), [Baoquan Chen](https://cfcs.pku.edu.cn/baoquan).
 
-
+![avatar](teaser.PNG)
 
 ## Prerequisites
 
