@@ -1,5 +1,6 @@
 # Unsupervised Co-part Segmentation through Assembly
 ![avatar](teaser.PNG)
+
 ![Python](https://img.shields.io/badge/Python->=3.6-Blue?logo=python)  ![Pytorch](https://img.shields.io/badge/PyTorch-==1.0.0-Red?logo=pytorch)
 
 
