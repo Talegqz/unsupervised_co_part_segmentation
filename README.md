@@ -78,7 +78,11 @@ Some code  is adapted from [first-order-model](https://github.com/AliaksandrSiar
 If you use this code for your research, please cite our paper:
 
 ~~~bibtex
-@article{
+@inproceedings{Gao2021ucos,
+  TITLE = {Unsupervised Co-part Segmentation through Assembly},
+  AUTHOR = {Gao, Qinzhe and Wang, Bin and Liu, Libin and Chen, Baoquan },
+  BOOKTITLE = {International Conference on Machine Learning},
+  YEAR = {2021},
 }
 ~~~
 
