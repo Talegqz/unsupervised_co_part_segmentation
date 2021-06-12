@@ -5,7 +5,7 @@
 
 
 
-This repository contains the source code for the paper [Unsupervised Co-part Segmentation through Assembly](https://arxiv.org/pdf/2106.05897) by Qingzhe Gao, Bin Wang, Libin Liu, Baoquan Chen.
+This repository contains the source code for the paper [Unsupervised Co-part Segmentation through Assembly](https://arxiv.org/abs/2106.05897v1) by Qingzhe Gao, Bin Wang, Libin Liu, Baoquan Chen.
 
 
 
