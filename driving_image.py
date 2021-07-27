@@ -6,6 +6,9 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
+from imageio import mimread
+from skimage.color import gray2rgb
+
 def read_video(name, frame_shape=(128,128)):
     """
     Read video which can be:
@@ -29,8 +32,22 @@ def read_video(name, frame_shape=(128,128)):
                 this_image
                 )
         video_array = np.array(video_array)/255
-
+    elif name.lower().endswith('.gif') or name.lower().endswith('.mp4') or name.lower().endswith('.mov'):
+        
+        video = np.array(mimread(name))
+        if len(video.shape) == 3:
+            video = np.array([gray2rgb(frame) for frame in video])
+        if video.shape[-1] == 4:
+            video = video[..., :3]
+        video_array=[]
+        for v in video:
+            v = cv2.resize(v
+                    ,(frame_shape[0:2])
+                    ) 
+            video_array.append(v)
+        video_array = np.array(video_array)/255
     return video_array
+
 
 def out_tensor_to_image(out_tensor):
     out_image = out_tensor.detach().cpu().numpy()
