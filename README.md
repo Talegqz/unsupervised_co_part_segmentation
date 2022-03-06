@@ -73,7 +73,6 @@ Some code  is adapted from [first-order-model](https://github.com/AliaksandrSiar
 
 
 ## Citation
-(to do)
 If you use this code for your research, please cite our paper:
 
 ~~~bibtex
