@@ -670,7 +670,7 @@ class Part_3D_Disnet(nn.Module):
             # eye = torch.eye(4).view(1,1,4,4).type(value.type())
             # value = torch.abs(eye - value).mean()
             loss_dict['equivariance_affine'] = loss*arg.weight_eq
-        if   "rots_flag" in arg and arg.matrix_flag:
+        if   "rots_flag" in arg :
             # first shift the part to center
             we_need_part = out['pred_image_t_weight'][:,:-1,0]
             b,p,w,h = we_need_part.shape
