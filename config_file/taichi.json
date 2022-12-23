@@ -3,10 +3,10 @@
     "data_path":"/home/rubbly/mnt/gqzdataset/exercise_yoga2",
 
     "load_path": null,
-    "comment":"load path is for breakpoint to continue training or finetune",
+   
    
     "repeat_numb":5,
-    "comment":"repeat dataset for N times in one epoch",
+
 
     "part_numb": 11,
     "epoch_start":0,
@@ -36,7 +36,6 @@
             "saturation": 0.1,
             "hue": 0.1
         },
-        "comment":"data augmentation parameter"
     },
     "vgg_loss_source": true,
     "weight_s_image": 0.1,
